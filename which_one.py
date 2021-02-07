@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 import getting_chapter_url_x
+# import final_downloader_x
 
 manga_names = []
 raw_link = []
@@ -33,6 +34,14 @@ class which_manga:
         for_loops()
 
         list_of_links = list(dict.fromkeys(raw_link))
+        # print(list_of_links)
+
+        if not list_of_links:
+            print("There is no such type of manga sorry:")
+            print("please try again from start")
+            exit()
+
+
         del list_of_links[-1]
 
 
@@ -44,21 +53,28 @@ class which_manga:
 
         global to_chapter
         # print("name{}".format(manga_names))
-        print("\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-        printing = pd.DataFrame(
-            {
-                'list':manga_names,
-            }
-        )
-
-        print(printing)
-        print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 
         if len(manga_names) == 1:
-            pass
-        elif len(manga_names) == 0:
-            pass
+            fin_raw_link = dup_list_of_links[0]
+            to_chapter = "https://mangapill.com"+fin_raw_link
+
+            # print(to_chapter)
+
+
         elif len(manga_names) >= 2:
+
+            print("\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+            printing = pd.DataFrame(
+                {
+                    'list':manga_names,
+                }
+            )
+
+            print(printing)
+            # print(manga_names)
+            print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+    
+
             which_number = int(input("Enter the number of manga you want to download:"))
 
             if which_number > len(manga_names):
@@ -74,8 +90,10 @@ class which_manga:
                     if which_number == i:
                         
                         fin_raw_link = dup_list_of_links[which_number]
+                        # print(fin_raw_link,'aksjdfhakjsdhfkajsdhfjkasdhfjkasdhfakjsdfhkajsdfhkjdass')
                         to_chapter = "https://mangapill.com"+fin_raw_link
-                        
+                        # print(to_chapter)
+          
     def getting_chapter_url(self):
         passing_value2 = getting_chapter_url_x.Random_name(to_chapter)
         passing_value2.main_program()
@@ -96,7 +114,7 @@ class name:
         passing_value1 = which_manga(final_url)
         passing_value1.which_title()
         passing_value1.selecting_links()
-        passing_value1.getting_chapter_url()
+        # passing_value1.getting_chapter_url()
         # print(final_url)
 
 
@@ -111,3 +129,4 @@ if __name__ == "__main__":
 
 
 
+# print("testing")

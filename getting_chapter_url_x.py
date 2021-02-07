@@ -33,7 +33,7 @@ class Random_name:
         url_stuff.to_csv('manga_all_chapter_url_link.csv')
 
 if __name__ == "__main__":
-    print("\n\n\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+    print("\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     url = input("Enter the url of manga you want to download:")
 
     passing_value = Random_name(url)
